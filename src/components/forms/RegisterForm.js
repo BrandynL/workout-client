@@ -19,7 +19,6 @@ const RegisterForm = () => {
 
 	return (
 		<Box>
-			<h1>Register</h1>
 			<form onSubmit={handleSubmit} noValidate autoComplete='off'>
 				<TextField
 					error={false}

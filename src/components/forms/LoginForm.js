@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Box from '@material-ui/core/Box';
 import { TextField, Button } from '@material-ui/core';
+import { api } from '../../config';
 
 const LoginForm = () => {
 	const [credentials, setcredentials] = useState({
@@ -8,9 +9,21 @@ const LoginForm = () => {
 		password: '',
 	});
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log(credentials);
+		const request = await fetch(api.base + api.endpoints.user_auth, {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/Json',
+			},
+			body: JSON.stringify(credentials),
+		});
+		const response = await request.json();
+
+		// todo: read me
+		// https://hasura.io/blog/best-practices-of-using-jwt-with-graphql/
+		console.log(response);
 	};
 
 	const handleUpdateCredentials = (e) => {
@@ -19,7 +32,6 @@ const LoginForm = () => {
 
 	return (
 		<Box>
-			<h1>Login</h1>
 			<form onSubmit={handleSubmit} noValidate autoComplete='off'>
 				<TextField
 					error={false}
