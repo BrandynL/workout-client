@@ -1,13 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Container, Box } from '@material-ui/core';
-import { UserContext } from '../UserContext/UserContext';
 
 export default function HomeScreen() {
-	const { user } = useContext(UserContext);
-
 	return (
 		<Container>
-			<Box>{console.log(user)}</Box>
+			<Box
+				minHeight='100vh'
+				display='flex'
+				justifyContent='center'
+				alignItems='center'
+			>
+				<h1>Home Screen</h1>
+			</Box>
 		</Container>
 	);
 }
