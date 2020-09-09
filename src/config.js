@@ -13,5 +13,14 @@ const API = {
 	prod: {},
 };
 
+const TOKEN = {
+	dev: {
+		name: 'x-auth-token',
+	},
+};
+
 export const api =
 	process.env.NODE_ENV === 'development' ? API.dev.api : API.prod.api;
+
+export const token =
+	process.env.NODE_ENV === 'development' ? TOKEN.dev : TOKEN.prod;
