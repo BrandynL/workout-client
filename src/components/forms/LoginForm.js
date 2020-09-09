@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Box from '@material-ui/core/Box';
 import { TextField, Button } from '@material-ui/core';
 import { api } from '../../config';
+import { UserContext } from '../../UserContext/UserContext';
 
 const LoginForm = () => {
 	const [credentials, setcredentials] = useState({
 		email: '',
 		password: '',
 	});
+
+	const { setuser } = useContext(UserContext);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -20,10 +23,11 @@ const LoginForm = () => {
 			body: JSON.stringify(credentials),
 		});
 		const response = await request.json();
-
-		// todo: read me
-		// https://hasura.io/blog/best-practices-of-using-jwt-with-graphql/
-		console.log(response);
+		if (!response.errors) {
+			setuser(response);
+		} else {
+			console.log(response.errors);
+		}
 	};
 
 	const handleUpdateCredentials = (e) => {
