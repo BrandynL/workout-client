@@ -1,3 +1,4 @@
+import JwtDecode from 'jwt-decode';
 const { token } = require('../config');
 
 class AuthTokenHelperService {
@@ -14,9 +15,7 @@ class AuthTokenHelperService {
 	}
 
 	decode() {
-		const decoded = {};
-		this._token.split('.').map((token) => Object.assign(decoded, token));
-		return decoded;
+		return JwtDecode(this._token);
 	}
 
 	tokenIsValid() {
