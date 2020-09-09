@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import Box from '@material-ui/core/Box';
 import { TextField, Button } from '@material-ui/core';
 import { api } from '../../config';
-import { UserContext } from '../../UserContext/UserContext';
+import { UserContext } from '../../context/UserContext/UserContext';
 
 const LoginForm = () => {
 	const [credentials, setcredentials] = useState({
@@ -14,7 +14,7 @@ const LoginForm = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		const request = await fetch(api.base + api.endpoints.user_auth, {
+		const request = await fetch(api.v1.base + api.v1.endpoints.user_auth, {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',
@@ -24,6 +24,7 @@ const LoginForm = () => {
 		});
 		const response = await request.json();
 		if (!response.errors) {
+			// todo : set token as cookie ?
 			setuser(response);
 		} else {
 			console.log(response.errors);
