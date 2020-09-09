@@ -1,9 +1,11 @@
 const dev = {
 	api: {
-		base: 'https://127.0.0.1:8000',
-		endpoints: {
-			user_auth: '/api/v1/auth',
-			user_register: '/api/v1/register',
+		v1: {
+			base: 'https://127.0.0.1:8000',
+			endpoints: {
+				user_auth: '/api/v1/auth',
+				user_register: '/api/v1/register',
+			},
 		},
 	},
 };

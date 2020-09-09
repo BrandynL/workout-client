@@ -4,7 +4,7 @@ import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 import HomeScreen from '../screens/HomeScreen';
 import { useContext } from 'react';
-import { UserContext } from '../UserContext/UserContext';
+import { UserContext } from '../context/UserContext/UserContext';
 
 const Router = () => {
 	const { user } = useContext(UserContext);
