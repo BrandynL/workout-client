@@ -3,12 +3,15 @@ import Box from '@material-ui/core/Box';
 import { TextField, Button } from '@material-ui/core';
 import { api } from '../../config';
 import { UserContext } from '../../context/UserContext/UserContext';
+import AuthTokenHelperService from '../../helperServices/AuthTokenHelperService';
 
 const LoginForm = () => {
 	const [credentials, setcredentials] = useState({
 		email: '',
 		password: '',
 	});
+
+	const tokenHelper = new AuthTokenHelperService();
 
 	const { setuser } = useContext(UserContext);
 
@@ -23,11 +26,12 @@ const LoginForm = () => {
 			body: JSON.stringify(credentials),
 		});
 		const response = await request.json();
-		if (!response.errors) {
-			// todo : set token as cookie ?
+		if (!response.errors && response.token) {
+			tokenHelper.setToken(response.token);
 			setuser(response);
 		} else {
-			console.log(response.errors);
+			// todo : handle error display
+			console.log(response);
 		}
 	};
 
