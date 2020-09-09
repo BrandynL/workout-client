@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Box, Button } from '@material-ui/core';
+import { Container, Box } from '@material-ui/core';
 import RegisterForm from '../components/forms/RegisterForm';
 import { Link } from 'react-router-dom';
 
