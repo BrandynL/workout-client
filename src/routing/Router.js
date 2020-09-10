@@ -16,10 +16,10 @@ const Router = () => {
 					<HomeScreen />
 				</Route>
 				<Route path='/login'>
-					{user.token ? <Redirect to='/' /> : <LoginScreen />}
+					{user ? <Redirect to='/' /> : <LoginScreen />}
 				</Route>
 				<Route path='/register'>
-					{user.token ? <Redirect to='/' /> : <RegisterScreen />}
+					{user ? <Redirect to='/' /> : <RegisterScreen />}
 				</Route>
 			</Switch>
 		</BrowserRouter>

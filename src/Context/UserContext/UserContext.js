@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AuthTokenHelperService from '../../helperServices/AuthTokenHelperService';
 
-export const UserContext = React.createContext({ user: {} });
+export const UserContext = React.createContext();
 
 export const UserContextProvider = ({ children }) => {
 	const tokenHelper = new AuthTokenHelperService();
